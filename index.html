@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta Gantt · PEI UAH 2026-2030</title>
+  <style>
+    :root{--bg:#f1f5f9;--card:#fff;--muted:#64748b;--border:#e2e8f0;--text:#0f172a;--orange:#ea580c;--orange-bg:#ffedd5;--blue:#1d4ed8;--blue-bg:#dbeafe;--green:#047857;--green-bg:#d1fae5;--dark:#0f172a}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1800px;margin:0 auto;padding:24px}.card{background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+    .hero,.filters,.detail,.list,.table-card{padding:24px}.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{background:#f8fafc;border:1px solid var(--border);border-radius:18px;padding:14px}
+    .eyebrow{color:var(--orange);font-size:14px;font-weight:700}.title{font-size:34px;font-weight:800;margin:8px 0}.subtitle{color:var(--muted);max-width:900px;line-height:1.5}
+    .metric .label{color:var(--muted);font-size:14px}.metric .value{font-size:28px;font-weight:800;margin-top:4px}
+    .filters-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px}.input,.select{width:100%;padding:14px 16px;border-radius:18px;border:1px solid var(--border);background:#fff;font-size:14px}
+    .layout{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-top:24px}.list-scroll{max-height:620px;overflow:auto;padding-right:4px}.task-btn{width:100%;text-align:left;border:1px solid var(--border);border-radius:18px;padding:16px;background:#fff;margin-bottom:12px;cursor:pointer}.task-btn:hover{border-color:#fdba74;background:#fff7ed}
+    .muted{color:var(--muted)}.tag{font-size:12px;padding:6px 10px;border-radius:999px;background:#f1f5f9;display:inline-block}.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .detail-box{background:#f8fafc;border:1px solid var(--border);border-radius:18px;padding:14px;margin-bottom:12px}.detail-box .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.detail-box .v{font-size:14px;line-height:1.5;margin-top:6px}
+    .gantt-wrap{overflow:auto}.gantt{display:grid;min-width:1700px;grid-template-columns:380px 220px repeat(16,minmax(70px,1fr))}.head{background:#f8fafc;font-weight:700;color:#334155;border-bottom:1px solid var(--border);padding:14px 16px;font-size:14px}.center{text-align:center}
+    .phase{grid-column:1 / -1;background:var(--dark);color:#fff;padding:12px 16px;font-weight:700;font-size:14px}.cell{border-top:1px solid #f1f5f9;padding:12px 16px;font-size:14px}.timeline{border-top:1px solid #f1f5f9;border-left:1px solid #f1f5f9;min-height:64px;padding:8px;display:flex;align-items:center;justify-content:center}.dot{color:#cbd5e1}.pill{width:100%;height:32px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}.orange{background:var(--orange-bg);color:#9a3412}.blue{background:var(--blue-bg);color:#1e40af}.green{background:var(--green-bg);color:#065f46}
+    @media (max-width:1100px){.hero-grid,.layout,.filters-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Aplicación web construida desde Excel</div>
+        <div class="title">Carta Gantt · Actualización PEI UAH 2026–2030</div>
+        <div class="subtitle">Vista ejecutiva e interactiva del plan de trabajo, organizada por fases, tareas, responsables y horizonte temporal.</div>
+      </div>
+      <div class="metrics" id="metrics"></div>
+    </div>
+  </div>
+
+  <div class="card filters" style="margin-top:24px">
+    <div class="filters-grid">
+      <input id="search" class="input" placeholder="Buscar por tarea, responsable o producto" />
+      <select id="fase" class="select"></select>
+      <select id="tipo" class="select"></select>
+      <select id="responsable" class="select"></select>
+    </div>
+  </div>
+
+  <div class="card table-card" style="margin-top:24px">
+    <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+  </div>
+
+  <div class="layout">
+    <div class="card list">
+      <h2>Listado resumido</h2>
+      <div class="list-scroll" id="list"></div>
+    </div>
+    <div class="card detail">
+      <h2>Ficha de tarea</h2>
+      <div id="detail" class="muted">Selecciona una tarea para ver su detalle.</div>
+    </div>
+  </div>
+</div>
+<script>
+const tasks = [
+{id:4,fase:"1. Diseño del PEI Institucional",tarea:"Preparación de kit planificación",detalle:"Elaboración de propuesta de indicadores y metas institucionales, matriz de tributación de planes vigentes al PEI, benchmarks y metodología para talleres de facultad.",tipo:"Trabajo interno Equipo DGD",producto:"Kit de planificación",responsables:"Dirección de Gestión y Desarrollo",participantes:"Unidades centrales (DDPU, VcM, Dirección de Investigación, Finanzas, Operaciones, Cooperación)",inicio:"2026-04-01",termino:"2026-05-30",estado:"Planificado"},
+{id:5,fase:"1. Diseño del PEI Institucional",tarea:"Definir metodología de seguimiento y control del PEI",detalle:"Trabajo interno para definir metodología de seguimiento y control del PEI.",tipo:"Trabajo interno Equipo DGD",producto:"Metodología del seguimiento y control del PEI",responsables:"Dirección de Gestión y Desarrollo",participantes:"DAI, Dirección de Planificación",inicio:"2026-04-01",termino:"2026-06-20",estado:"Planificado"},
+{id:6,fase:"1. Diseño del PEI Institucional",tarea:"Validación y ajuste de indicadores y metas institucionales",detalle:"Discusión de propuesta de indicadores y metas institucionales elaborados por Equipo DGD.",tipo:"Trabajo equipos DGD - Rectoría",producto:"Indicadores, metas y planes de acción del PEI Institucional",responsables:"Comité de Rectoría",participantes:"DGD",inicio:"2026-05-10",termino:"2026-05-20",estado:"Planificado"},
+{id:8,fase:"2. Diseño de los Planes de Facultad",tarea:"Presentación rediseño PEI UAH y plan de trabajo con las facultades (Kick-off)",detalle:"Presentación de metodologías de trabajo. Se propone reunión online con todas las facultades.",tipo:"Reunión informativa para facultades",producto:"PPT del Kick-off",responsables:"Dirección de Gestión y Desarrollo",participantes:"Todas las facultades",inicio:"2026-06-20",termino:"2026-06-30",estado:"Planificado"},
+{id:9,fase:"2. Diseño de los Planes de Facultad",tarea:"Taller N° 1 plan de facultad",detalle:"Discusión y preparación de entregable 1: diagnóstico, prioridades y apuestas estratégicas.",tipo:"Reunión de trabajo con facultades",producto:"Entrega de kit de planificación",responsables:"Consejo de Facultad",participantes:"DGD",inicio:"2026-07-01",termino:"2026-07-30",estado:"Planificado"},
+{id:10,fase:"2. Diseño de los Planes de Facultad",tarea:"Trabajo interno de facultad",detalle:"Trabajo autónomo para revisión detallada de los PEI, focos y prioridades de cada facultad.",tipo:"Trabajo interno de facultad",producto:"Borrador del entregable 1",responsables:"Decanatura",participantes:"Abierto a la convocatoria de la Facultad",inicio:null,termino:null,estado:"Sin fecha"},
+{id:11,fase:"2. Diseño de los Planes de Facultad",tarea:"Taller N° 2 plan de facultad",detalle:"Discusión y preparación de entregable 1: alineamiento con Plan Institucional, objetivos y acciones comprometidas.",tipo:"Reunión de trabajo con facultades",producto:"Entregable 1",responsables:"Consejo de Facultad",participantes:"DGD",inicio:"2026-07-01",termino:"2026-07-30",estado:"Planificado"},
+{id:12,fase:"2. Diseño de los Planes de Facultad",tarea:"Formulación Técnica del Plan de Facultad",detalle:"Preparación de entregable 2: Plan de Facultad.",tipo:"Trabajo interno colaborativo de facultad",producto:"Borrador del plan de facultad: matriz de estrategia, KPI y meta institucional",responsables:"Comité Técnico de Facultad / Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:"2026-08-01",termino:"2026-08-30",estado:"Planificado"},
+{id:13,fase:"2. Diseño de los Planes de Facultad",tarea:"Valorización Preliminar del Plan de Facultad",detalle:"Valorización del Plan de Facultad.",tipo:"Trabajo interno de facultad",producto:"Plan de facultad valorizado",responsables:"Dirección Administrativa Facultad / VRAF",participantes:"No aplica",inicio:"2026-08-01",termino:"2026-08-30",estado:"Planificado"},
+{id:14,fase:"2. Diseño de los Planes de Facultad",tarea:"Validación de la propuesta de Plan de Facultad",detalle:"Revisión del contenido del plan considerando coherencia interna, prioridades, líneas de acción y costeo.",tipo:"Sesiones de validación",producto:"Plan de facultad aprobado",responsables:"Consejo de Facultad",participantes:"No aplica",inicio:"2026-09-01",termino:"2026-09-15",estado:"Planificado"},
+{id:15,fase:"2. Diseño de los Planes de Facultad",tarea:"Análisis agregado de las propuestas de planes de facultad",detalle:"Revisión comparada para verificar articulación con el Plan Institucional, coherencia entre objetivos, indicadores, metas y factibilidad presupuestaria.",tipo:"Trabajo interno DGD",producto:"Entregable 3",responsables:"Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:"2026-09-15",termino:"2026-10-31",estado:"Planificado"},
+{id:16,fase:"2. Diseño de los Planes de Facultad",tarea:"Revisión de factibilidad presupuestaria y asignación preliminar de recursos",detalle:"Contraste entre requerimientos financieros y disponibilidad/proyección de recursos.",tipo:"Sesiones de revisión",producto:"Plan de Facultad revisado",responsables:"Vicerrectoría de Administración y Finanzas",participantes:"No aplica",inicio:"2026-09-15",termino:"2026-10-31",estado:"Planificado"},
+{id:17,fase:"2. Diseño de los Planes de Facultad",tarea:"Consolidación de observaciones y ajuste final de planes de facultad",detalle:"Validación de coherencia institucional y priorización.",tipo:"Sesiones de revisión",producto:"Plan de Facultad validado",responsables:"Comité de Rectoría",participantes:"No aplica",inicio:"2026-11-01",termino:"2026-11-10",estado:"Planificado"},
+{id:18,fase:"2. Diseño de los Planes de Facultad",tarea:"Validación y ajuste de Plan de Facultad",detalle:"Ajuste del plan en base a la factibilidad técnica y económica.",tipo:"Sesiones de revisión",producto:"Plan de Facultad validado",responsables:"DGD - CAE - Decanatura",participantes:"VRAF",inicio:null,termino:null,estado:"Sin fecha"},
+{id:19,fase:"2. Diseño de los Planes de Facultad",tarea:"Validación Institucional de los Planes de Facultad",detalle:"Validación de consistencia institucional.",tipo:"Sesiones de revisión",producto:"Plan de Facultad validado",responsables:"Consejo Académico",participantes:"Decanaturas / DGD",inicio:"2026-11-11",termino:"2026-11-30",estado:"Planificado"},
+{id:20,fase:"2. Diseño de los Planes de Facultad",tarea:"Difusión del PEI Institucional y Planes de Facultad",detalle:"Difusión del PEI Institucional y de Planes de Facultad.",tipo:"Difusión",producto:"PEI y Planes de Facultades difundidos",responsables:"Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:"2026-12-01",termino:"2026-12-30",estado:"Planificado"},
+{id:22,fase:"3. Implementación y Seguimiento",tarea:"Implementación de las líneas de acción institucionales y de facultades",detalle:"Las facultades dan curso a las líneas de acción de sus planes y DGD apoya en orientaciones para la implementación.",tipo:"Implementación y acompañamiento",producto:"Reuniones de acompañamiento",responsables:"Facultad / Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:"2027-01-01",termino:"2030-12-30",estado:"Planificado"},
+{id:23,fase:"3. Implementación y Seguimiento",tarea:"Seguimiento y control del avance de las líneas de acción",detalle:"Seguimiento al avance de la línea de acción.",tipo:"Seguimiento",producto:"Seguimiento",responsables:"Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:null,termino:null,estado:"Sin fecha"},
+{id:24,fase:"3. Implementación y Seguimiento",tarea:"Seguimiento de indicadores intermedios",detalle:"Seguimiento de indicadores intermedios.",tipo:"Seguimiento",producto:"Seguimiento",responsables:"Dirección de Gestión y Desarrollo",participantes:"No aplica",inicio:null,termino:null,estado:"Sin fecha"},
+{id:25,fase:"3. Implementación y Seguimiento",tarea:"Presentar avances sobre indicadores intermedios",detalle:"Presentación de avances en la estrategia de indicadores intermedios.",tipo:"Presentación",producto:"PPT y análisis del avance",responsables:"Coordinación Académica Estratégica / Consejo de Facultad",participantes:"No aplica",inicio:null,termino:null,estado:"Sin fecha"}
+];
+const months=["Ene 2026","Feb 2026","Mar 2026","Abr 2026","May 2026","Jun 2026","Jul 2026","Ago 2026","Sep 2026","Oct 2026","Nov 2026","Dic 2026","2027","2028","2029","2030"];
+const starts=["2026-01-01","2026-02-01","2026-03-01","2026-04-01","2026-05-01","2026-06-01","2026-07-01","2026-08-01","2026-09-01","2026-10-01","2026-11-01","2026-12-01","2027-01-01","2028-01-01","2029-01-01","2030-01-01"].map(d=>new Date(d));
+const ends=["2026-01-31","2026-02-28","2026-03-31","2026-04-30","2026-05-31","2026-06-30","2026-07-31","2026-08-31","2026-09-30","2026-10-31","2026-11-30","2026-12-31","2027-12-31","2028-12-31","2029-12-31","2030-12-31"].map(d=>new Date(d));
+const search=document.getElementById('search'),fase=document.getElementById('fase'),tipo=document.getElementById('tipo'),responsable=document.getElementById('responsable');
+const metricsEl=document.getElementById('metrics'), gantt=document.getElementById('gantt'), list=document.getElementById('list'), detail=document.getElementById('detail');
+function unique(key){return [...new Set(tasks.map(t=>t[key]))]}
+function fillSelect(el, first, vals){el.innerHTML=[`<option>${first}</option>`,...vals.map(v=>`<option>${v}</option>`)].join('')}
+fillSelect(fase,'Todas',unique('fase')); fillSelect(tipo,'Todos',unique('tipo')); fillSelect(responsable,'Todos',unique('responsables'));
+const metrics=[['Tareas',tasks.length],['Con fecha',tasks.filter(t=>t.inicio&&t.termino).length],['Sin fecha',tasks.filter(t=>!t.inicio||!t.termino).length],['Fases',new Set(tasks.map(t=>t.fase)).size]];
+metricsEl.innerHTML=metrics.map(([l,v])=>`<div class="metric"><div class="label">${l}</div><div class="value">${v}</div></div>`).join('');
+function overlaps(task,s,e){if(!task.inicio||!task.termino) return false; const ts=new Date(task.inicio), te=new Date(task.termino); return ts<=e && te>=s}
+function phaseClass(f){return f.startsWith('1.')?'orange':f.startsWith('2.')?'blue':'green'}
+function durationLabel(task){if(!task.inicio||!task.termino) return 'Sin fecha definida'; const diff=Math.round((new Date(task.termino)-new Date(task.inicio))/86400000)+1; return `${diff} días calendario`;}
+function filtered(){const q=search.value.toLowerCase(); return tasks.filter(t=>(!q||[t.tarea,t.detalle,t.responsables,t.producto].join(' ').toLowerCase().includes(q))&&(fase.value==='Todas'||t.fase===fase.value)&&(tipo.value==='Todos'||t.tipo===tipo.value)&&(responsable.value==='Todos'||t.responsables===responsable.value));}
+function showDetail(task){detail.innerHTML=`<div class="detail-box"><div class="k">Fase</div><div class="v">${task.fase}</div></div><div class="detail-box"><div class="k">Tarea</div><div class="v"><strong>${task.tarea}</strong></div></div><div class="detail-box"><div class="k">Detalle</div><div class="v">${task.detalle}</div></div><div class="detail-box"><div class="k">Tipo</div><div class="v">${task.tipo}</div></div><div class="detail-box"><div class="k">Producto esperado</div><div class="v">${task.producto}</div></div><div class="detail-box"><div class="k">Responsables</div><div class="v">${task.responsables}</div></div><div class="detail-box"><div class="k">Participantes</div><div class="v">${task.participantes||'No aplica'}</div></div><div class="details-grid"><div class="detail-box"><div class="k">Inicio</div><div class="v">${task.inicio||'Sin definir'}</div></div><div class="detail-box"><div class="k">Término</div><div class="v">${task.termino||'Sin definir'}</div></div></div><div class="detail-box"><div class="k">Duración</div><div class="v">${durationLabel(task)}</div></div>`}
+function render(){const data=filtered(); gantt.innerHTML=`<div class="head">Tarea</div><div class="head">Responsable</div>${months.map(m=>`<div class="head center">${m}</div>`).join('')}`; const grouped={}; data.forEach(t=>(grouped[t.fase]=grouped[t.fase]||[]).push(t)); Object.entries(grouped).forEach(([phase,arr])=>{gantt.innerHTML+=`<div class="phase">${phase}</div>`; arr.forEach(task=>{gantt.innerHTML+=`<div class="cell"><strong>${task.tarea}</strong><div class="muted" style="font-size:12px;margin-top:4px">${task.tipo}</div></div><div class="cell">${task.responsables}</div>${starts.map((s,i)=>`<div class="timeline">${overlaps(task,s,ends[i])?`<div class="pill ${phaseClass(task.fase)}">Activa</div>`:`<span class="dot">•</span>`}</div>`).join('')}`})}); list.innerHTML=data.map(task=>`<button class="task-btn" data-id="${task.id}"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="font-weight:700">${task.tarea}</div><div class="muted" style="margin-top:4px;font-size:13px">${task.fase}</div></div><span class="tag">${task.estado}</span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:14px;margin-top:12px"><div><strong>Responsable:</strong> ${task.responsables}</div><div><strong>Inicio:</strong> ${task.inicio||'Sin definir'}</div><div><strong>Término:</strong> ${task.termino||'Sin definir'}</div></div></button>`).join(''); document.querySelectorAll('.task-btn').forEach(btn=>btn.onclick=()=>showDetail(tasks.find(t=>t.id==btn.dataset.id)));}
+[search,fase,tipo,responsable].forEach(el=>el.addEventListener('input',render)); render();
+</script>
+</body>
+</html>
