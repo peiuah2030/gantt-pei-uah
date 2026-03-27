@@ -707,18 +707,20 @@
     
   </main>
 
-  <script>
+ <script>
     const timeline = ["MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC", "2027", "2028", "2029", "2030"];
     const rows = [
       {"isPhase": true, "phase": "1.- ACTUALIZACIÓN Y AJUSTES DEL PEI INSTITUCIONAL"},
-      {"isPhase": false, "task": "Levantamiento de información para las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Preparación del kit planificación institucional", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Preparación de kit planificación institucional", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Levantamiento de información para las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "X", "", "", "", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Definir metodología de trabajo DGD", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales", "owners": "Comité de Rectoría Ampliado", "marks": ["", "X", "X", "X", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación PEI 2030 con indicadores y metas", "owners": "Consejo Académico", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 1", "owners": "Comité de Rectoría", "marks": ["", "X", "", "", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 2", "owners": "Comité de Rectoría", "marks": ["", "", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 3", "owners": "Comité de Rectoría", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación final PEI Central", "owners": "Consejo Académico", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
 
       {"isPhase": true, "phase": "2.- ACTUALIZACIÓN Y AJUSTES DE LOS PLANES DE FACULTAD"},
-      {"isPhase": false, "task": "Presentación de metodología de trabajo con las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Presentación rediseño PEI UAH y plan de trabajo con las facultades (Kick-off)", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Taller N° 1 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Trabajo interno de facultad", "owners": "Decanatura", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Taller N° 2 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
@@ -726,10 +728,13 @@
       {"isPhase": false, "task": "Valorización Preliminar del Plan de Facultad", "owners": "Dirección Administrativa Facultad/ VRAF", "marks": ["", "", "", "", "", "X", "", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Validación de la propuesta de Plan de Facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Análisis agregado de las propuestas de planes de facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Factibilidad técnica y económica del Plan de Facultad", "owners": "Vicerrectoría de Administración y Finanzas", "Dirección de Gestión y Desarrollo", "Comité técnico de facultad", marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de Plan de Facultad", "owners": "DGD - CAE - Decanatura", "Vicerrectoría de Administración y Finanzas", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Revisión de factibilidad presupuestaria y asignación preliminar de recursos", "owners": "Vicerrectoría de Administración y Finanzas", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Consolidación de observaciones y ajuste final de planes de facultad", "owners": "Comité de rectoría", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación y ajuste de Plan de Facultad", "owners": "DGD - CAE - Decanatura", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
       {"isPhase": false, "task": "Validación Institucional de los Planes de Facultad", "owners": "Consejo Académico", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación 1  PEI", "owners": "Por definir", "marks": ["", "", "", "", "", "", "", "", "X", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación 2 PEI", "owners": "Por definir", "marks": ["", "", "", "", "", "", "", "", "X", "", "", "", "", ""]},
+      {"isPhase": false, "task": "Validación 3 PEI", "owners": "Directorio UAH", "marks": ["", "", "", "", "", "", "", "", "", "X", "", "", "", ""]},
       {"isPhase": false, "task": "Difusión del PEI Institucional y Planes de Facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "X", "X", "", "", ""]},
 
       {"isPhase": true, "phase": "3.- IMPLEMENTACIÓN Y SEGUIMIENTO"},
