@@ -707,242 +707,235 @@
     
   </main>
 
- <script>
-    const timeline = ["MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC", "2027", "2028", "2029", "2030"];
-    const rows = [
-      {"isPhase": true, "phase": "1.- ACTUALIZACIÓN Y AJUSTES DEL PEI INSTITUCIONAL"},
-      {"isPhase": false, "task": "Preparación de kit planificación institucional", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Levantamiento de información para las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "X", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Definir metodología de trabajo DGD", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 1", "owners": "Comité de Rectoría", "marks": ["", "X", "", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 2", "owners": "Comité de Rectoría", "marks": ["", "", "X", "", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales 3", "owners": "Comité de Rectoría", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación final PEI Central", "owners": "Consejo Académico", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
+<script>
+  const timeline = ["MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC", "2027", "2028", "2029", "2030"];
 
-      {"isPhase": true, "phase": "2.- ACTUALIZACIÓN Y AJUSTES DE LOS PLANES DE FACULTAD"},
-      {"isPhase": false, "task": "Presentación rediseño PEI UAH y plan de trabajo con las facultades (Kick-off)", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Taller N° 1 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Trabajo interno de facultad", "owners": "Decanatura", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Taller N° 2 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Formulación Técnica del Plan de Facultad", "owners": "Comité Técnico de Facultad / Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "X", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Valorización Preliminar del Plan de Facultad", "owners": "Dirección Administrativa Facultad/ VRAF", "marks": ["", "", "", "", "", "X", "", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación de la propuesta de Plan de Facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Análisis agregado de las propuestas de planes de facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Revisión de factibilidad presupuestaria y asignación preliminar de recursos", "owners": "Vicerrectoría de Administración y Finanzas", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Consolidación de observaciones y ajuste final de planes de facultad", "owners": "Comité de rectoría", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación y ajuste de Plan de Facultad", "owners": "DGD - CAE - Decanatura", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación Institucional de los Planes de Facultad", "owners": "Consejo Académico", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación 1  PEI", "owners": "Por definir", "marks": ["", "", "", "", "", "", "", "", "X", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación 2 PEI", "owners": "Por definir", "marks": ["", "", "", "", "", "", "", "", "X", "", "", "", "", ""]},
-      {"isPhase": false, "task": "Validación 3 PEI", "owners": "Directorio UAH", "marks": ["", "", "", "", "", "", "", "", "", "X", "", "", "", ""]},
-      {"isPhase": false, "task": "Difusión del PEI Institucional y Planes de Facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "X", "X", "", "", ""]},
+  const rows = [
+    {"isPhase": true, "phase": "1.- ACTUALIZACIÓN Y AJUSTES DEL PEI INSTITUCIONAL"},
+    {"isPhase": false, "task": "Levantamiento de información para las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Preparación del kit planificación institucional", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Definir metodología de trabajo DGD", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "X", "X", "", "", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Validación y ajuste de indicadores y metas institucionales", "owners": "Comité de Rectoría Ampliado", "marks": ["", "X", "X", "X", "", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Validación PEI 2030 con indicadores y metas", "owners": "Consejo Académico", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
 
-      {"isPhase": true, "phase": "3.- IMPLEMENTACIÓN Y SEGUIMIENTO"},
-      {"isPhase": false, "task": "Implementación de las lineas de acción intitucionales y de facultades", "owners": "Facultad/ Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Seguimiento de avances de las lineas de acción", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Seguimiento de indicadores intermedios", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Coordinación Académica Estratégica", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Comité de Rectoria Ampliado", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]}, "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Seguimiento de indicadores estratégicos", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Presentar resultado anual del avance de la estrategia", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
-      {"isPhase": false, "task": "Evaluación intermedia 2028", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "", "X", "", ""]},
-      {"isPhase": false, "task": "Ajustes a la estrategia", "owners": "Comité de Rectoría Ampliado", "marks": ["", "", "", "", "", "", "", "", "", "", "", "X", "", ""]},
-      {"isPhase": false, "task": "Cierre del PEI UAH 2030", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "", "", "", "X"]}
-    ];
+    {"isPhase": true, "phase": "2.- ACTUALIZACIÓN Y AJUSTES DE LOS PLANES DE FACULTAD"},
+    {"isPhase": false, "task": "Presentación de metodología de trabajo con las facultades", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "X", "", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Taller N° 1 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Trabajo interno de facultad", "owners": "Decanatura", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Taller N° 2 plan de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "X", "", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Formulación Técnica del Plan de Facultad", "owners": "Comité Técnico de Facultad / Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "X", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Valorización Preliminar del Plan de Facultad", "owners": "Dirección Administrativa Facultad / VRAF", "marks": ["", "", "", "", "", "X", "", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Validación de la propuesta de Plan de Facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Análisis agregado de las propuestas de planes de facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Factibilidad técnica y económica del Plan de Facultad", "owners": "Vicerrectoría de Administración y Finanzas / Dirección de Gestión y Desarrollo / Comité técnico de facultad", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Validación y ajuste de Plan de Facultad", "owners": "DGD - CAE - Decanatura / Vicerrectoría de Administración y Finanzas", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Consolidación de observaciones y ajuste final de planes de facultad", "owners": "Comité de Rectoría Ampliado", "marks": ["", "", "", "", "", "", "X", "", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Validación Institucional de los Planes de Facultad", "owners": "Consejo Académico", "marks": ["", "", "", "", "", "", "X", "X", "", "", "", "", "", ""]},
+    {"isPhase": false, "task": "Difusión del PEI Institucional y Planes de Facultad", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "X", "X", "", "", ""]},
 
-    const owners = [
-      "Comité Técnico de Facultad / Dirección de Gestión y Desarrollo",
-      "Comité de Rectoría Ampliado",
-      "Comité de rectoría ampliado",
-      "Consejo Académico",
-      "Consejo de Facultad",
-      "Coordinación Académica Estratégica/ Consejo de Facultad",
-      "DGD - CAE - Decanatura",
-      "Decanatura",
-      "Dirección Administrativa Facultad/ VRAF",
-      "Dirección de Gestión y Desarrollo",
-      "Directorio UAH",
-      "Facultad/ Dirección de Gestión y Desarrollo",
-      "Por definir",
-      "Vicerrectoría de Administración y Finanzas"
-    ];
+    {"isPhase": true, "phase": "3.- IMPLEMENTACIÓN Y SEGUIMIENTO"},
+    {"isPhase": false, "task": "Implementación de las lineas de acción intitucionales y de facultades", "owners": "Facultad / Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Seguimiento de avances de las lineas de acción", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Seguimiento de indicadores intermedios", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Coordinación Académica Estratégica", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Consejo de Facultad", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Presentar avances del PEI y planes de facultad", "owners": "Comité de Rectoría Ampliado", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Seguimiento de indicadores estratégicos", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Presentar resultado anual del avance de la estrategia", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "X", "X", "X", "X"]},
+    {"isPhase": false, "task": "Evaluación intermedia 2028", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "", "X", "", ""]},
+    {"isPhase": false, "task": "Ajustes a la estrategia", "owners": "Comité de Rectoría Ampliado", "marks": ["", "", "", "", "", "", "", "", "", "", "", "X", "", ""]},
+    {"isPhase": false, "task": "Cierre del PEI UAH 2030", "owners": "Dirección de Gestión y Desarrollo", "marks": ["", "", "", "", "", "", "", "", "", "", "", "", "", "X"]}
+  ];
 
-    const phaseCounts = {
-      "1.- ACTUALIZACIÓN Y AJUSTES DEL PEI INSTITUCIONAL": 7,
-      "2.- ACTUALIZACIÓN Y AJUSTES DE LOS PLANES DE FACULTAD": 16,
-      "3.- IMPLEMENTACIÓN Y SEGUIMIENTO": 9
-    };
+  const activities = rows.filter(r => !r.isPhase);
+  const owners = [...new Set(activities.map(r => r.owners).filter(Boolean))].sort();
 
-    document.getElementById('statActivities').textContent = rows.filter(r => !r.isPhase).length;
-    document.getElementById('statPhases').textContent = rows.filter(r => r.isPhase).length;
-    document.getElementById('statOwners').textContent = owners.length;
-
-    const searchInput = document.getElementById('searchInput');
-    const ownerFilter = document.getElementById('ownerFilter');
-    const phaseFilter = document.getElementById('phaseFilter');
-    const resetBtn = document.getElementById('resetBtn');
-    const ganttHead = document.getElementById('ganttHead');
-    const ganttBody = document.getElementById('ganttBody');
-    const emptyState = document.getElementById('emptyState');
-
-    owners.forEach(owner => {
-      const opt = document.createElement('option');
-      opt.value = owner;
-      opt.textContent = owner;
-      ownerFilter.appendChild(opt);
-    });
-
-    Object.keys(phaseCounts).forEach(phase => {
-      const opt = document.createElement('option');
-      opt.value = phase;
-      opt.textContent = `${phase} (${phaseCounts[phase]})`;
-      phaseFilter.appendChild(opt);
-    });
-
-    function buildHead() {
-      ganttHead.innerHTML = '';
-      const tr1 = document.createElement('tr');
-      const tr2 = document.createElement('tr');
-      tr2.className = 'months';
-
-      const fixed = [
-        ['Actividad', 'col-a'],
-        ['Responsable', 'col-b'],
-      ];
-
-      fixed.forEach(([label, cls]) => {
-        const th = document.createElement('th');
-        th.rowSpan = 2;
-        th.className = `sticky sticky-head ${cls}`;
-        th.textContent = label;
-        tr1.appendChild(th);
-      });
-
-      const yearGroups = [
-        ['2026', 10],
-        ['2027', 1],
-        ['2028', 1],
-        ['2029', 1],
-        ['2030', 1],
-      ];
-
-      yearGroups.forEach(([year, span]) => {
-        const th = document.createElement('th');
-        th.colSpan = span;
-        th.textContent = year;
-        tr1.appendChild(th);
-      });
-
-      timeline.forEach(label => {
-        const th = document.createElement('th');
-        th.textContent = label;
-        tr2.appendChild(th);
-      });
-
-      ganttHead.appendChild(tr1);
-      ganttHead.appendChild(tr2);
+  const phaseCounts = {};
+  let currentPhaseForCount = "";
+  rows.forEach(r => {
+    if (r.isPhase) {
+      currentPhaseForCount = r.phase;
+      if (!phaseCounts[currentPhaseForCount]) phaseCounts[currentPhaseForCount] = 0;
+    } else if (currentPhaseForCount) {
+      phaseCounts[currentPhaseForCount] += 1;
     }
+  });
 
-    function getFilteredRows() {
-      const q = searchInput.value.trim().toLowerCase();
-      const owner = ownerFilter.value;
-      const phaseSelected = phaseFilter.value;
+  document.getElementById('statActivities').textContent = activities.length;
+  document.getElementById('statPhases').textContent = rows.filter(r => r.isPhase).length;
+  document.getElementById('statOwners').textContent = owners.length;
 
-      const result = [];
-      let currentPhase = null;
-      let phaseBuffer = [];
+  const searchInput = document.getElementById('searchInput');
+  const ownerFilter = document.getElementById('ownerFilter');
+  const phaseFilter = document.getElementById('phaseFilter');
+  const resetBtn = document.getElementById('resetBtn');
+  const ganttHead = document.getElementById('ganttHead');
+  const ganttBody = document.getElementById('ganttBody');
+  const emptyState = document.getElementById('emptyState');
 
-      function flushPhase() {
-        if (currentPhase && phaseBuffer.length) {
-          result.push(currentPhase, ...phaseBuffer);
-        }
+  ownerFilter.innerHTML = '<option value="">Todos los responsables</option>';
+  phaseFilter.innerHTML = '<option value="">Todas las fases</option>';
+
+  owners.forEach(owner => {
+    const opt = document.createElement('option');
+    opt.value = owner;
+    opt.textContent = owner;
+    ownerFilter.appendChild(opt);
+  });
+
+  Object.keys(phaseCounts).forEach(phase => {
+    const opt = document.createElement('option');
+    opt.value = phase;
+    opt.textContent = `${phase} (${phaseCounts[phase]})`;
+    phaseFilter.appendChild(opt);
+  });
+
+  function buildHead() {
+    ganttHead.innerHTML = '';
+
+    const tr1 = document.createElement('tr');
+    const tr2 = document.createElement('tr');
+    tr2.className = 'months';
+
+    const fixed = [
+      ['Actividad', 'col-a'],
+      ['Responsable', 'col-b'],
+    ];
+
+    fixed.forEach(([label, cls]) => {
+      const th = document.createElement('th');
+      th.rowSpan = 2;
+      th.className = `sticky sticky-head ${cls}`;
+      th.textContent = label;
+      tr1.appendChild(th);
+    });
+
+    const yearGroups = [
+      ['2026', 10],
+      ['2027', 1],
+      ['2028', 1],
+      ['2029', 1],
+      ['2030', 1],
+    ];
+
+    yearGroups.forEach(([year, span]) => {
+      const th = document.createElement('th');
+      th.colSpan = span;
+      th.textContent = year;
+      tr1.appendChild(th);
+    });
+
+    timeline.forEach(label => {
+      const th = document.createElement('th');
+      th.textContent = label;
+      tr2.appendChild(th);
+    });
+
+    ganttHead.appendChild(tr1);
+    ganttHead.appendChild(tr2);
+  }
+
+  function getFilteredRows() {
+    const q = searchInput.value.trim().toLowerCase();
+    const owner = ownerFilter.value;
+    const phaseSelected = phaseFilter.value;
+
+    const result = [];
+    let currentPhase = null;
+    let phaseBuffer = [];
+
+    function flushPhase() {
+      if (currentPhase && phaseBuffer.length) {
+        result.push(currentPhase, ...phaseBuffer);
       }
-
-      rows.forEach(row => {
-        if (row.isPhase) {
-          flushPhase();
-          currentPhase = row;
-          phaseBuffer = [];
-          return;
-        }
-
-        const text = `${row.task} ${row.owners}`.toLowerCase();
-        const okSearch = !q || text.includes(q);
-        const okOwner = !owner || row.owners === owner;
-        const okPhase = !phaseSelected || currentPhase?.phase === phaseSelected;
-
-        if (okSearch && okOwner && okPhase) {
-          phaseBuffer.push(row);
-        }
-      });
-
-      flushPhase();
-      return result;
     }
 
-    function render() {
-      buildHead();
-      ganttBody.innerHTML = '';
-      const filtered = getFilteredRows();
-
-      if (!filtered.length) {
-        emptyState.style.display = 'block';
+    rows.forEach(row => {
+      if (row.isPhase) {
+        flushPhase();
+        currentPhase = row;
+        phaseBuffer = [];
         return;
       }
-      emptyState.style.display = 'none';
 
-      filtered.forEach(row => {
-        if (row.isPhase) {
-          const tr = document.createElement('tr');
-          tr.className = 'phase-row';
-          const td = document.createElement('td');
-          td.colSpan = 16;
-          td.textContent = row.phase;
-          tr.appendChild(td);
-          ganttBody.appendChild(tr);
-          return;
-        }
+      const text = `${row.task} ${row.owners}`.toLowerCase();
+      const okSearch = !q || text.includes(q);
+      const okOwner = !owner || row.owners === owner;
+      const okPhase = !phaseSelected || currentPhase?.phase === phaseSelected;
 
-        const tr = document.createElement('tr');
-
-        const leftCells = [
-          ['col-a', `<div class="activity">${row.task || '-'}</div>`, true],
-          ['col-b', `<span class="owner-chip">${row.owners || '-'}</span>`, true],
-        ];
-
-        leftCells.forEach(([cls, content, isHtml]) => {
-          const td = document.createElement('td');
-          td.className = `sticky ${cls}`;
-          if (isHtml) td.innerHTML = content;
-          else td.textContent = content;
-          tr.appendChild(td);
-        });
-
-        row.marks.forEach((mark, idx) => {
-          const td = document.createElement('td');
-          td.className = 'time-col' + (idx >= 10 ? ' year-end' : '');
-          if (mark && String(mark).toUpperCase() === 'X') {
-            td.innerHTML = '<span class="mark-chip">X</span>';
-          }
-          tr.appendChild(td);
-        });
-
-        ganttBody.appendChild(tr);
-      });
-    }
-
-    searchInput.addEventListener('input', render);
-    ownerFilter.addEventListener('change', render);
-    phaseFilter.addEventListener('change', render);
-    resetBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      ownerFilter.value = '';
-      phaseFilter.value = '';
-      render();
+      if (okSearch && okOwner && okPhase) {
+        phaseBuffer.push(row);
+      }
     });
 
+    flushPhase();
+    return result;
+  }
+
+  function render() {
+    buildHead();
+    ganttBody.innerHTML = '';
+
+    const filtered = getFilteredRows();
+
+    if (!filtered.length) {
+      emptyState.style.display = 'block';
+      return;
+    }
+
+    emptyState.style.display = 'none';
+
+    filtered.forEach(row => {
+      if (row.isPhase) {
+        const tr = document.createElement('tr');
+        tr.className = 'phase-row';
+
+        const td = document.createElement('td');
+        td.colSpan = 16;
+        td.textContent = row.phase;
+
+        tr.appendChild(td);
+        ganttBody.appendChild(tr);
+        return;
+      }
+
+      const tr = document.createElement('tr');
+
+      const leftCells = [
+        ['col-a', `<div class="activity">${row.task || '-'}</div>`, true],
+        ['col-b', `<span class="owner-chip">${row.owners || '-'}</span>`, true],
+      ];
+
+      leftCells.forEach(([cls, content, isHtml]) => {
+        const td = document.createElement('td');
+        td.className = `sticky ${cls}`;
+        if (isHtml) td.innerHTML = content;
+        else td.textContent = content;
+        tr.appendChild(td);
+      });
+
+      row.marks.forEach((mark, idx) => {
+        const td = document.createElement('td');
+        td.className = 'time-col' + (idx >= 10 ? ' year-end' : '');
+        if (mark && String(mark).toUpperCase() === 'X') {
+          td.innerHTML = '<span class="mark-chip">X</span>';
+        }
+        tr.appendChild(td);
+      });
+
+      ganttBody.appendChild(tr);
+    });
+  }
+
+  searchInput.addEventListener('input', render);
+  ownerFilter.addEventListener('change', render);
+  phaseFilter.addEventListener('change', render);
+  resetBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    ownerFilter.value = '';
+    phaseFilter.value = '';
     render();
-  </script>
-</body>
-</html>
+  });
+
+  render();
+</script>
